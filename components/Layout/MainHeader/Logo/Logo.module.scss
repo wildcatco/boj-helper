@@ -1,0 +1,28 @@
+.img {
+  cursor: pointer;
+  width: 250px;
+}
+
+.light {
+  display: block;
+}
+
+.dark {
+  display: none;
+}
+
+:global(.dark) {
+  .light {
+    display: none;
+  }
+
+  .dark {
+    display: block;
+  }
+}
+
+@media (max-width: 620px) {
+  .img {
+    width: 200px;
+  }
+}

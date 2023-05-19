@@ -1,0 +1,54 @@
+@import 'variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border;
+  background-color: $background-sub;
+  padding: 1rem 4rem;
+  height: 4rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+:global(.dark) {
+  .header {
+    border-bottom-color: $border-dark-indigo;
+    background-color: $background-sub-dark;
+  }
+}
+
+@media (max-width: 980px) {
+  .header-right {
+    img {
+      margin-right: 1.5rem;
+    }
+    .toggle {
+      margin-right: 1.5rem;
+    }
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .header {
+    padding: 1rem 2rem;
+  }
+}

@@ -1,0 +1,20 @@
+@import 'variables';
+
+.header {
+  margin: 1rem 0;
+  border-bottom: 1px solid $color-primary;
+  padding-bottom: 0.5rem;
+  color: $color-primary;
+
+  h3 {
+    margin: 0;
+    font-size: $font-xl;
+  }
+}
+
+:global(.dark) {
+  .header {
+    border-bottom-color: $color-primary-dark;
+    color: $color-primary-dark;
+  }
+}

@@ -1,0 +1,19 @@
+.light {
+  display: none;
+  cursor: pointer;
+}
+
+.dark {
+  display: block;
+  cursor: pointer;
+}
+
+:global(.dark) {
+  .light {
+    display: block;
+  }
+
+  .dark {
+    display: none;
+  }
+}

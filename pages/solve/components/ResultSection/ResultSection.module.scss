@@ -1,0 +1,22 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.2rem;
+  overflow-y: scroll;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-bottom: 4rem;
+    border-top: 1px solid $border;
+    min-height: 15rem;
+  }
+}

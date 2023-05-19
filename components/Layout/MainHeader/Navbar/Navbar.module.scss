@@ -1,0 +1,38 @@
+@import "variables";
+
+.navbar {
+  font-size: $font-lg;
+  display: flex;
+  margin: 0 1rem;
+
+  > * {
+    padding: 0 0.6rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .navbar {
+    font-size: $font-base;
+    position: absolute;
+    z-index: 10;
+    top: 5rem;
+    right: 1rem;
+    flex-direction: column;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    border: 1px solid $border;
+    border-radius: 10px;
+    background-color: white;
+
+    > * {
+      padding: 0.1rem 0;
+    }
+  }
+
+  :global(.dark) {
+    .navbar {
+      border-color: $border-dark-gray;
+      background-color: $background-sub-dark;
+    }
+  }
+}

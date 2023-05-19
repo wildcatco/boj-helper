@@ -1,0 +1,35 @@
+@import 'variables';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  user-select: none;
+}
+
+.page-button-list {
+  display: flex;
+  align-items: center;
+}
+
+.page-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 0.3rem;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.active-page {
+  border-radius: 50%;
+  background-color: $color-primary;
+  color: white;
+}
+
+:global(.dark) {
+  .active-page {
+    background-color: $color-primary-dark;
+  }
+}

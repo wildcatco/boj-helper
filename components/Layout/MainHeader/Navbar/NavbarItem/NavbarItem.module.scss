@@ -1,0 +1,27 @@
+@import "variables";
+
+.navbar-item {
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.active {
+  font-weight: bold;
+  color: $color-primary;
+}
+
+:global(.dark) {
+  .navbar-item {
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+
+  .active {
+    color: $color-primary-dark;
+  }
+}

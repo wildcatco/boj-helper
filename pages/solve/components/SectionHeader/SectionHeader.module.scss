@@ -1,0 +1,19 @@
+@import 'variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $border;
+  background-color: $background-sub;
+  padding: 0 1rem;
+  font-weight: bold;
+  font-size: 0.7rem;
+  user-select: none;
+}
+
+:global(.dark) {
+  .header {
+    border-color: $border-dark-indigo;
+    background-color: $background-sub-dark;
+  }
+}

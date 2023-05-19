@@ -1,0 +1,20 @@
+@import "variables";
+
+.text-area {
+  font-size: $font-base;
+  padding: 0.5rem 1rem;
+  resize: none;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  outline-color: $color-primary;
+}
+
+:global(.dark) {
+  .text-area {
+    border-color: $border-dark-gray;
+
+    &:focus {
+      outline-color: $color-primary-dark;
+    }
+  }
+}

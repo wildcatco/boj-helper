@@ -1,0 +1,53 @@
+@import "variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  border-radius: $radius-md;
+}
+
+.contents {
+  margin-bottom: 1rem;
+
+  > *:not(:last-child) {
+    margin-bottom: 0.6rem;
+  }
+}
+
+.content {
+  display: flex;
+  > *:nth-child(2) {
+    position: absolute;
+    left: 9rem;
+  }
+}
+
+.label {
+  font-size: $font-lg;
+  font-weight: bold;
+  color: $color-primary;
+  container: $color-primary;
+}
+
+.controls {
+  > * {
+    width: 100%;
+  }
+
+  > *:not(:last-child) {
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+:global(.dark) {
+  .container {
+    border-color: $border-dark-gray;
+  }
+
+  .label {
+    color: $color-primary-dark;
+  }
+}

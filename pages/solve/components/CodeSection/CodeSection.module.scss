@@ -1,0 +1,19 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex-grow: 1;
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    min-height: 500px;
+    border-top: 1px solid $border;
+  };
+}

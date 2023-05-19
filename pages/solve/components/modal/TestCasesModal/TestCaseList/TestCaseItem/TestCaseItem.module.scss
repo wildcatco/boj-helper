@@ -1,0 +1,57 @@
+@import 'variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: $color-primary;
+  font-size: $font-xl;
+  user-select: none;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  > *:first-child {
+    margin-right: 0.5rem;
+  }
+}
+
+.actions {
+  display: flex;
+
+  > *:first-child {
+    margin-right: 0.5rem;
+  }
+}
+
+.action {
+  transition: all 200ms;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.contents {
+  padding: 0 2rem;
+
+  h4 {
+    margin: 0;
+    padding: 1rem 0;
+  }
+}
+
+:global(.dark) {
+  .header {
+    color: $color-primary-dark;
+  }
+
+  .contents {
+    h4 {
+      color: $text-dark;
+    }
+  }
+}

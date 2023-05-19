@@ -1,0 +1,75 @@
+@import 'variables';
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+}
+
+.table-header {
+  display: flex;
+  border-radius: $radius-md $radius-md 0 0;
+  background-color: $color-primary;
+  padding: 0.5rem 0;
+  color: white;
+  font-size: $font-lg;
+  text-align: center;
+}
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    border-bottom: 1px solid $border;
+  }
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-color: $border;
+
+  &:hover {
+    background-color: #ededed;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $radius-md $radius-md;
+  }
+}
+
+.data {
+  padding: 0.25rem 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.center {
+  text-align: center;
+}
+
+:global(.dark) {
+  .table {
+    border-color: $border-dark-gray;
+  }
+
+  .table-header {
+    background-color: $color-primary-dark;
+  }
+
+  .table-row {
+    border-color: $border-dark-gray;
+
+    &:hover {
+      background-color: #545454;
+    }
+  }
+
+  .selected {
+    background-color: #545454;
+  }
+}

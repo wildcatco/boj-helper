@@ -1,0 +1,13 @@
+@import "variables";
+
+.home {
+  font-size: 2rem;
+  cursor: pointer;
+  color: $color-primary;
+}
+
+:global(.dark) {
+  .home {
+    color: $color-primary-dark;
+  }
+}

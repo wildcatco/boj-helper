@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30vh;
+  width: 20rem;
+
+  input {
+    margin-bottom: 1rem;
+  }
+
+  button {
+    height: 2.5rem;
+  }
+}

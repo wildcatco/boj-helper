@@ -1,0 +1,88 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id         String     @id @default(cuid())
+  email      String
+  provider   String
+  solutions  Solution[]
+  categories Category[]
+  snippets   Snippet[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt @default(now())
+
+  @@unique([email, provider])
+}
+
+model Problem {
+  id              String     @id
+  title           String
+  descriptionHtml String
+  inputHtml       String
+  outputHtml      String
+  limitHtml       String?
+  examples        Example[]
+  solutions       Solution[]
+  associations    Int[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model Example {
+  id        String   @id @default(cuid())
+  input     String
+  output    String
+  problem   Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  problemId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Solution {
+  id         String   @id @default(cuid())
+  code       String
+  language   String
+  difficulty String
+  revisit    Boolean  @default(true)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  problem    Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  problemId  String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([userId, problemId])
+}
+
+model Category {
+  id        String     @id @default(cuid())
+  name      String
+  solutions Solution[]
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@unique([userId, name])
+}
+
+model Snippet {
+  id        String   @id @default(cuid())
+  name      String
+  language  String
+  code      String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, name])
+}

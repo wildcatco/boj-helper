@@ -1,0 +1,14 @@
+@import "variables";
+
+.title {
+  font-size: $font-2xl;
+  font-weight: bold;
+  user-select: none;
+  color: $color-primary;
+}
+
+:global(.dark) {
+  .title {
+    color: $color-primary-dark;
+  }
+}

@@ -1,0 +1,25 @@
+@import "variables";
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  > *:first-child {
+    margin-bottom: 2rem;
+  }
+}
+
+.message {
+  font-size: $font-xl;
+  font-weight: bold;
+  color: $color-primary;
+}
+
+:global(.dark) {
+  .message {
+    color: $color-primary-dark;
+  }
+}

@@ -1,0 +1,15 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin: 0.3rem 0;
+  }
+}
+
+.case {
+  font-weight: bold;
+  > * {
+    margin-right: 0.5rem;
+  }
+}

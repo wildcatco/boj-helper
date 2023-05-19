@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 15rem;
+  max-height: 80vh;
+  padding: 0 2rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+
+  > *:first-child {
+    margin-right: 1rem;
+  }
+}

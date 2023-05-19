@@ -1,0 +1,40 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $color-primary;
+  border-radius: $radius-md;
+  padding: 0.2rem 1.8rem 0.2rem 1.2rem;
+  height: 2.6rem;
+  color: $color-primary;
+
+  > *:not(:first-child) {
+    margin-left: 0.5rem;
+  }
+}
+
+.button {
+  cursor: pointer;
+}
+
+.reset {
+  font-size: $font-xl;
+}
+
+.time {
+  width: 4.4rem;
+  user-select: none;
+
+  span {
+    font-size: $font-lg;
+  }
+}
+
+:global(.dark) {
+  .container {
+    border-color: $color-primary-dark;
+    color: $color-primary-dark;
+  }
+}

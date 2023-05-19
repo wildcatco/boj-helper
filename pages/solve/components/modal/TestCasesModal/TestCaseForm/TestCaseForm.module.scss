@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80vw;
+  max-width: 30rem;
+
+  > *:first-child {
+    margin-bottom: 2rem;
+  }
+}
+
+.inputs {
+  > *:first-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+
+  > *:first-child {
+    margin-right: 1rem;
+  }
+}

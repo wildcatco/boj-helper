@@ -1,0 +1,63 @@
+@import 'variables';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease 200ms;
+  cursor: pointer;
+  border-radius: $radius-md;
+  padding: 1rem 0.7rem;
+  font-size: $font-base;
+  user-select: none;
+  white-space: nowrap;
+
+  &:disabled {
+    filter: brightness(70%);
+    pointer-events: none;
+  }
+}
+
+.base {
+  border: none;
+  background-color: $color-primary;
+  color: white;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.outlined {
+  border: 1px solid $color-primary;
+  background-color: transparent;
+  color: $color-primary;
+
+  &:hover {
+    filter: brightness(0.9);
+    background-color: $color-primary;
+    color: white;
+  }
+}
+
+.link {
+  width: 100%;
+  height: 100%;
+}
+
+:global(.dark) {
+  .base {
+    background-color: $color-primary-dark;
+  }
+
+  .outlined {
+    border-color: $color-primary-dark;
+    color: $color-primary-dark;
+
+    &:hover {
+      filter: brightness(0.9);
+      background-color: $color-primary-dark;
+      color: white;
+    }
+  }
+}

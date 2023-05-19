@@ -1,0 +1,38 @@
+@import 'variables';
+
+.list {
+  position: absolute;
+  top: 1.4rem;
+  right: 0;
+  z-index: 10;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  background-color: white;
+  padding: 0.4rem 0;
+  max-height: 15rem;
+  overflow-y: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.item {
+  cursor: pointer;
+  padding: 0.1rem 1rem;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+:global(.dark) {
+  .list {
+    border-color: $border-dark-gray;
+    background-color: $background-dark;
+  }
+
+  .item {
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+}

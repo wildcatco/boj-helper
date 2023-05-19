@@ -1,0 +1,46 @@
+@import 'variables';
+
+.theme-selector {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 1.8rem;
+  user-select: none;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  border: 2px solid $color-primary;
+  padding: 0 0.5rem;
+  height: 100%;
+}
+
+.dark-button {
+  border-right: 0;
+  border-radius: $radius-md 0 0 $radius-md;
+  color: $color-primary;
+}
+
+.light-button {
+  border-left: 0;
+  border-radius: 0 $radius-md $radius-md 0;
+  background-color: $color-primary;
+  color: white;
+}
+
+:global(.dark) {
+  .button {
+    border-color: $color-primary-dark;
+  }
+
+  .dark-button {
+    background-color: $color-primary-dark;
+    color: white;
+  }
+
+  .light-button {
+    background-color: transparent;
+    color: $color-primary-dark;
+  }
+}

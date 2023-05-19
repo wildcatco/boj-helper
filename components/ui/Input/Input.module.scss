@@ -1,0 +1,19 @@
+@import "variables";
+
+.input {
+  font-size: $font-base;
+  padding: 0.7rem 1rem;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  outline-color: $color-primary;
+}
+
+:global(.dark) {
+  .input {
+    border-color: $border-dark-gray;
+
+    &:focus {
+      outline-color: $color-primary-dark;
+    }
+  }
+}

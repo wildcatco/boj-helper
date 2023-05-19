@@ -1,0 +1,27 @@
+@import "variables";
+
+.label {
+  font-size: $font-base;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  color: $color-primary;
+}
+
+.base {
+  font-size: $font-base;
+}
+
+.lg {
+  font-size: $font-lg;
+}
+
+.xl {
+  font-size: $font-xl;
+}
+
+:global(.dark) {
+  .label {
+    color: $color-primary-dark;
+  }
+}

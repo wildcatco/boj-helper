@@ -1,0 +1,5 @@
+.filter {
+  > *:not(:last-child) {
+    margin-right: 0.6rem;
+  }
+}

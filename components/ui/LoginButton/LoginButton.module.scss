@@ -1,0 +1,39 @@
+@import "variables";
+
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16rem;
+  height: 3rem;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  background-color: white;
+
+  &:hover {
+    filter: brightness(95%);
+  }
+
+  &:disabled {
+    cursor: wait;
+    filter: brightness(100%);
+  }
+}
+
+.icon {
+  font-size: $font-3xl;
+  margin-right: 0.5rem;
+}
+
+:global(.dark) {
+  .login-button {
+    color: $text;
+    background-color: #dcdcdc;
+
+    &:hover {
+      border-color: $border-dark-gray;
+    }
+  }
+}

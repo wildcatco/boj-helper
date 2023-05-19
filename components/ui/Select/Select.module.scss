@@ -1,0 +1,21 @@
+@import 'variables';
+
+.select {
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  padding: 0.7rem 1rem;
+
+  &:focus {
+    outline-color: $color-primary;
+  }
+}
+
+:global(.dark) {
+  .select {
+    border-color: $border-dark-gray;
+
+    &:focus {
+      outline-color: $color-primary-dark;
+    }
+  }
+}

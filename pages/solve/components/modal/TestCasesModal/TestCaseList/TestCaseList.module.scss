@@ -1,0 +1,9 @@
+.container {
+  margin-bottom: 2rem;
+  height: 30rem;
+  overflow-y: auto;
+
+  > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}

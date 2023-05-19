@@ -1,0 +1,13 @@
+.container {
+  margin-top: 14rem;
+
+  > *:first-child {
+    margin-bottom: 2rem;
+  }
+}
+
+.test-user {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}

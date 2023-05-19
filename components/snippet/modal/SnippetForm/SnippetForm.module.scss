@@ -1,0 +1,39 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  min-width: 20rem;
+  max-width: 35rem;
+  padding: 0 2rem;
+
+  > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.code {
+ height: 25rem;
+  border: 1px solid $border;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+
+  > *:first-child {
+    margin-right: 1rem;
+  }
+}
+
+:global(.dark) {
+  .code {
+    border-color: $border-dark-gray;
+  }
+}

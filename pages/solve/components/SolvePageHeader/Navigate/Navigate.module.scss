@@ -1,0 +1,19 @@
+@import 'variables';
+
+.container {
+  display: flex;
+}
+
+.link {
+  font-size: $font-base;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  color: $color-primary;
+}
+
+:global(.dark) {
+  .link {
+    color: $color-primary-dark;
+  }
+}
