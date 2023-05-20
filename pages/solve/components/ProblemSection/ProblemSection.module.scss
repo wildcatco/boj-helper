@@ -12,6 +12,10 @@
   overflow-y: scroll;
   font-size: $font-lg;
   line-height: 1.8rem;
+
+  ul {
+    list-style: disc;
+  }
 }
 
 @media (max-width: 768px) {
