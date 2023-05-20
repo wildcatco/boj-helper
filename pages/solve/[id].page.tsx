@@ -25,6 +25,7 @@ import { problemState } from '@/states/problem';
 import { Problem } from '@/types/problem';
 
 import styles from './[id].module.scss';
+import {addedTestCasesState} from "@/states/test-case";
 
 interface ProblemPageProps {
   problem: Problem;
@@ -76,10 +77,12 @@ export const getStaticProps: GetStaticProps<ProblemPageProps> = async (
 const SolvePage: NextPage<ProblemPageProps> = ({ problem }) => {
   const router = useRouter();
   const setProblem = useSetRecoilState(problemState);
+  const setAddedTestCase = useSetRecoilState(addedTestCasesState)
   const [windowWidth, setWindowWidth] = useState<number | undefined>();
 
   useEffect(() => {
     setProblem(problem);
+    setAddedTestCase([])
   }, [problem, setProblem]);
 
   useEffect(() => {
