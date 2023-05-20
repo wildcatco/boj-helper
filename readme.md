@@ -14,6 +14,12 @@
 즉, 하나의 창에서 문제를 보며 코드를 작성하고 테스트 케이스도 확인해 볼 수 있습니다.<br>
 또한 여러 부가 기능으로 문제 푸는 데 도움을 받을 수 있습니다.
 
+### 시연 영상
+
+https://www.youtube.com/watch?v=X5pdJCYOxuc
+
+[![Video Label](http://img.youtube.com/vi/X5pdJCYOxuc/0.jpg)](https://youtu.be/X5pdJCYOxuc)
+
 ## 기능
 
 ### 작성한 코드 테스트
