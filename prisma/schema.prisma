@@ -15,7 +15,8 @@ model User {
   categories Category[]
   snippets   Snippet[]
   createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt @default(now())
+  updatedAt  DateTime   @default(now()) @updatedAt
+  numOfRuns  Int        @default(0)
 
   @@unique([email, provider])
 }

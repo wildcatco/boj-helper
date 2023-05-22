@@ -48,6 +48,7 @@ const SolvePageFooter = () => {
 
     if (!error && results) {
       setExecutionResults({ data: results, loading: false });
+      await fetch('/api/increase', {method: 'POST'})
     } else {
       if (checkApiError(error, 'RunServerError')) {
         notifyError('채점 서버 에러');
