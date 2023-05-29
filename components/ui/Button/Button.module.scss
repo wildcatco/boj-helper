@@ -4,10 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all ease 200ms;
   cursor: pointer;
   border-radius: $radius-md;
-  padding: 1rem 0.7rem;
+  padding: 17px 11px;
   font-size: $font-base;
   user-select: none;
   white-space: nowrap;
@@ -29,6 +28,7 @@
 }
 
 .outlined {
+  padding: 16px 10px;
   border: 1px solid $color-primary;
   background-color: transparent;
   color: $color-primary;
@@ -38,6 +38,18 @@
     background-color: $color-primary;
     color: white;
   }
+}
+
+.loading {
+  pointer-events: none;
+
+  >span {
+    visibility: hidden;
+  }
+}
+
+.spinner {
+  position: absolute;
 }
 
 .link {

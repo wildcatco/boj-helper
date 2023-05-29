@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import clsx from 'clsx';
+
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
 import styles from './Button.module.scss';
@@ -23,23 +25,25 @@ const Button: React.FC<ButtonProps> = ({
   href,
   className,
 }) => {
-  const content = loading ? <LoadingSpinner /> : children;
-
   return (
     <button
-      className={`${styles.button} ${
-        outlined ? styles.outlined : styles.base
-      } ${className}`}
+      className={clsx(
+        styles.button,
+        outlined ? styles.outlined : styles.base,
+        loading && styles.loading,
+        className
+      )}
       onClick={onClick}
       disabled={disabled}
     >
       {href ? (
         <Link className={styles.link} href={href}>
-          {content}
+          {children}
         </Link>
       ) : (
-        content
+        <span>{children}</span>
       )}
+      {loading && <LoadingSpinner className={styles.spinner} />}
     </button>
   );
 };

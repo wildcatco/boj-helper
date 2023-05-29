@@ -12,7 +12,9 @@
     "format": "prettier --write .",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "prisma": {
     "seed": "tsx prisma/seed/index.ts"
@@ -22,11 +24,13 @@
     "@next-auth/prisma-adapter": "^1.0.5",
     "@next/font": "13.1.6",
     "@prisma/client": "^4.10.1",
+    "@storybook/addon-a11y": "^7.0.18",
     "@types/node": "18.11.19",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "axios": "^1.3.3",
     "cheerio": "1.0.0-rc.12",
+    "clsx": "^1.2.1",
     "cookies-next": "^2.1.1",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
@@ -40,11 +44,19 @@
     "react-toastify": "^9.1.1",
     "recoil": "^0.7.6",
     "recoil-persist": "^4.2.0",
+    "storybook-dark-mode": "^3.0.0",
     "swr": "^2.0.3",
     "typescript": "4.9.5",
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.18",
+    "@storybook/addon-interactions": "^7.0.18",
+    "@storybook/addon-links": "^7.0.18",
+    "@storybook/blocks": "^7.0.18",
+    "@storybook/nextjs": "^7.0.18",
+    "@storybook/react": "^7.0.18",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/cheerio": "^0.22.31",
     "@types/cli-progress": "^3.11.0",
@@ -53,11 +65,13 @@
     "@typescript-eslint/parser": "^5.54.0",
     "autoprefixer": "^10.4.13",
     "cli-progress": "^3.12.0",
+    "eslint-plugin-storybook": "^0.6.12",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-css-order": "^1.3.0",
     "prisma": "^4.10.1",
     "sass": "^1.58.0",
+    "storybook": "^7.0.18",
     "ts-dedent": "^2.2.0",
     "tsx": "^3.12.7",
     "uuid": "^9.0.0"
