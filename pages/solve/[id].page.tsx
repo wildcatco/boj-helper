@@ -83,7 +83,7 @@ const SolvePage: NextPage<SolvePageProps> = ({ problem }) => {
   useEffect(() => {
     setProblem(problem);
     setAddedTestCase([]);
-  }, [problem, setProblem]);
+  }, [problem, setProblem, setAddedTestCase]);
 
   useEffect(() => {
     if (router.isReady) {
