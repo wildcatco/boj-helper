@@ -22,12 +22,12 @@ import {
   saveProblem,
 } from '@/services/problems';
 import { problemState } from '@/states/problem';
+import { addedTestCasesState } from '@/states/test-case';
 import { Problem } from '@/types/problem';
 
 import styles from './[id].module.scss';
-import {addedTestCasesState} from "@/states/test-case";
 
-interface ProblemPageProps {
+interface SolvePageProps {
   problem: Problem;
 }
 
@@ -38,7 +38,7 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps: GetStaticProps<ProblemPageProps> = async (
+export const getStaticProps: GetStaticProps<SolvePageProps> = async (
   context
 ) => {
   const id = context.params?.id as string;
@@ -74,15 +74,15 @@ export const getStaticProps: GetStaticProps<ProblemPageProps> = async (
   };
 };
 
-const SolvePage: NextPage<ProblemPageProps> = ({ problem }) => {
+const SolvePage: NextPage<SolvePageProps> = ({ problem }) => {
   const router = useRouter();
   const setProblem = useSetRecoilState(problemState);
-  const setAddedTestCase = useSetRecoilState(addedTestCasesState)
+  const setAddedTestCase = useSetRecoilState(addedTestCasesState);
   const [windowWidth, setWindowWidth] = useState<number | undefined>();
 
   useEffect(() => {
     setProblem(problem);
-    setAddedTestCase([])
+    setAddedTestCase([]);
   }, [problem, setProblem]);
 
   useEffect(() => {
