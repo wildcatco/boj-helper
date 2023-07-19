@@ -77,12 +77,16 @@ export const runCode = async ({ language, code, testCases }: RunCodeBody) => {
         "fs.readFileSync('/dev/stdin').toString().trim()",
         `\`${testCase.input}\``
       );
-      newCode = `let output = '';\n${newCode}`;
-      newCode = newCode.replace(/console\.log\((.*?)\)/g, 'output += $1');
-      newCode = `${newCode}\noutput;`;
+      newCode = `\nlet output = '';\n(function () {\n${newCode}\n})()`;
+      newCode = newCode.replace(
+        /console\.log\(([\s\S]*?)\);/g,
+        'output += $1;'
+      );
+      newCode = `${newCode}\nreturn output;`;
+      newCode = `(function () {\n${newCode}\n})()`;
 
       try {
-        const output = String(eval(newCode));
+        const output = String(eval(newCode)).trim();
 
         results.push({
           caseNumber: i + 1,
