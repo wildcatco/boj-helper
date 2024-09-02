@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import SectionHeader from '../SectionHeader/SectionHeader';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -8,14 +8,22 @@ import { codeState, languageState } from '@/states/code';
 
 import styles from './CodeSection.module.scss';
 
+const CODE_SAVE_INTERVAL = 5000; // 5초
+
 interface CodeSectionProps {
+  problemNumber: number;
   fitToCode?: boolean;
 }
 
-const CodeSection: React.FC<CodeSectionProps> = ({ fitToCode }) => {
+const CodeSection: React.FC<CodeSectionProps> = ({
+  problemNumber,
+  fitToCode,
+}) => {
   const language = useRecoilValue(languageState);
   const [code, setCode] = useRecoilState(codeState);
   const [codeHeight, setCodeHeight] = useState<number>(250);
+  const codeRef = useRef<string>(code);
+  const CODE_SAVE_KEY = `code-${problemNumber}-${language}`;
 
   const handleCodeChange = (value: string | undefined) => {
     setCode(value || '');
@@ -36,7 +44,26 @@ const stdin = fs.readFileSync('/dev/stdin').toString().trim();
     } else {
       setCode('');
     }
-  }, [language, setCode]);
+
+    const savedCode = localStorage.getItem(CODE_SAVE_KEY);
+    if (savedCode) {
+      setCode(savedCode);
+    }
+  }, [CODE_SAVE_KEY, language, problemNumber, setCode]);
+
+  useEffect(() => {
+    codeRef.current = code;
+  }, [code]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      localStorage.setItem(CODE_SAVE_KEY, codeRef.current);
+    }, CODE_SAVE_INTERVAL);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [CODE_SAVE_KEY, problemNumber]);
 
   return (
     <div className={styles.container}>

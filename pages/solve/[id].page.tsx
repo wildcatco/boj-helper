@@ -115,7 +115,7 @@ const SolvePage: NextPage<SolvePageProps> = ({ problem }) => {
             <HorizontallyResizableWindow initialLeftRatio={0.3}>
               <ProblemSection />
               <VerticallyResizableWindow initialTopRatio={0.7}>
-                <CodeSection />
+                <CodeSection problemNumber={Number.parseInt(problem.id)} />
                 <ResultSection />
               </VerticallyResizableWindow>
             </HorizontallyResizableWindow>
@@ -123,7 +123,10 @@ const SolvePage: NextPage<SolvePageProps> = ({ problem }) => {
           {windowWidth && windowWidth <= 768 && (
             <>
               <ProblemSection />
-              <CodeSection fitToCode />
+              <CodeSection
+                problemNumber={Number.parseInt(problem.id)}
+                fitToCode
+              />
               <ResultSection />
             </>
           )}
