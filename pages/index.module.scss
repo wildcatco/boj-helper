@@ -1,14 +1,29 @@
-.form {
+.container {
   display: flex;
   flex-direction: column;
   margin-top: 30vh;
   width: 20rem;
 
+  button {
+    margin-bottom: 1rem;
+    height: 2.5rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
   input {
     margin-bottom: 1rem;
   }
+}
 
-  button {
-    height: 2.5rem;
+.like {
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
   }
 }

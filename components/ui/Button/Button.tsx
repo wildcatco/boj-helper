@@ -14,6 +14,7 @@ interface ButtonProps {
   children: React.ReactNode;
   href?: string;
   className?: string;
+  target?: '_blank' | '_self';
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   href,
   className,
+  target = '_self',
 }) => {
   return (
     <button
@@ -37,7 +39,12 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
     >
       {href ? (
-        <Link className={styles.link} href={href}>
+        <Link
+          className={styles.link}
+          href={href}
+          target={target}
+          rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        >
           {children}
         </Link>
       ) : (

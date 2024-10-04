@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
+import { AiOutlineLike } from 'react-icons/ai';
 import { useRecoilValue } from 'recoil';
 
 import Layout from '@/components/Layout';
@@ -43,17 +44,28 @@ const ProblemsPage = () => {
       title="문제 풀기"
       description="백준 문제의 번호를 입력하여 문제를 생성합니다."
     >
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <Input
-          type="number"
-          required={true}
-          placeholder="문제 번호를 입력하세요"
-          min={1000}
-          max={99999}
-          onChange={handleInputChange}
-        />
-        <Button loading={loading}>문제 풀기</Button>
-      </form>
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <Input
+            type="number"
+            required={true}
+            placeholder="문제 번호를 입력하세요"
+            min={1000}
+            max={99999}
+            onChange={handleInputChange}
+          />
+          <Button loading={loading}>문제 풀기</Button>
+        </form>
+        <Button
+          className={styles.like}
+          outlined
+          href="https://github.com/wildcatco/boj-helper"
+          target="_blank"
+        >
+          <AiOutlineLike />
+          <span>Like!</span>
+        </Button>
+      </div>
     </Layout>
   );
 };
