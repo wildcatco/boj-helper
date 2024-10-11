@@ -70,7 +70,6 @@ export const runCode = async ({ language, code, testCases }: RunCodeBody) => {
   if (language === 'javascript') {
     for (let i = 0; i < testCases.length; i++) {
       const testCase = testCases[i];
-
       let newCode = code.replace('const fs = require("fs")', '');
       newCode = newCode.replace("const fs = require('fs')", '');
       newCode = newCode.replace(
@@ -79,7 +78,12 @@ export const runCode = async ({ language, code, testCases }: RunCodeBody) => {
       );
 
       newCode = `console={};console.log = (...values) => {
-        output += values.join(' ');
+        output += values.map(value => {
+          if (typeof value === 'object') {
+            return JSON.stringify(value);
+          }
+          return String(value);
+        }).join(' ');
         output += '\\n';
       };\n${newCode}`;
       newCode = `let output = '';\n${newCode}`;
