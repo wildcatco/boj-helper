@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
-import { AiOutlineLike } from 'react-icons/ai';
 import { useRecoilValue } from 'recoil';
 
 import Layout from '@/components/Layout';
@@ -62,8 +61,7 @@ const ProblemsPage = () => {
           href="https://github.com/wildcatco/boj-helper"
           target="_blank"
         >
-          <AiOutlineLike />
-          <span>Like!</span>
+          <span>사용법 보기</span>
         </Button>
       </div>
     </Layout>
