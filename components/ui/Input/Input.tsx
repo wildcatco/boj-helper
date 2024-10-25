@@ -1,47 +1,9 @@
-import { ChangeEvent, HTMLInputTypeAttribute } from 'react';
-
 import styles from './Input.module.scss';
 
-interface InputProps {
-  type: HTMLInputTypeAttribute;
-  id?: string;
-  name?: string;
-  required?: boolean;
-  disabled?: boolean;
-  placeholder?: string;
-  min?: number;
-  max?: number;
-  value?: string | number;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-}
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-const Input: React.FC<InputProps> = ({
-  type,
-  id,
-  name,
-  required,
-  disabled,
-  placeholder,
-  min,
-  max,
-  value,
-  onChange,
-}) => {
-  return (
-    <input
-      id={id}
-      name={name}
-      className={styles.input}
-      type={type}
-      required={required}
-      disabled={disabled}
-      placeholder={placeholder || ''}
-      min={min}
-      max={max}
-      value={value}
-      onChange={onChange}
-    />
-  );
+const Input: React.FC<InputProps> = (props) => {
+  return <input className={styles.input} {...props} />;
 };
 
 export default Input;
