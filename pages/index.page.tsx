@@ -11,7 +11,7 @@ import { languageState } from '@/states/code';
 
 import styles from './index.module.scss';
 
-const ProblemsPage = () => {
+const HomePage = () => {
   const [problemId, setProblemId] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -68,4 +68,4 @@ const ProblemsPage = () => {
   );
 };
 
-export default ProblemsPage;
+export default HomePage;
