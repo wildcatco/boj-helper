@@ -1,6 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
 import CodeSection from './components/CodeSection';
@@ -107,7 +106,6 @@ const SolvePage: NextPage<SolvePageProps> = ({ problem }) => {
 
   return (
     <Layout title={`${problem.id}번 ${problem.title}`}>
-      <Script src="https://cdn.jsdelivr.net/pyodide/v0.23.0/full/pyodide.js" />
       <div className={styles.container}>
         <SolvePageHeader />
         <main className={styles.main}>

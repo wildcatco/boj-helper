@@ -28,15 +28,20 @@ export const runCode = async ({ language, code, testCases }: RunCodeBody) => {
       }
 
       try {
-        // @ts-ignore
-        const pyodide = await loadPyodide({
-          stdin: stdinFunc,
-          stdout: stdoutFunc,
-        });
+        if (!self.pyodie) {
+          importScripts(
+            'https://cdn.jsdelivr.net/pyodide/v0.23.0/full/pyodide.js'
+          );
+          self.pyodide = await loadPyodide({
+            stdin: stdinFunc,
+            stdout: stdoutFunc,
+          });
+        }
+
         // bug workaround (https://github.com/pyodide/pyodide/issues/3112)
         let newCode = code.replace(/print\(/g, 'print("thisistemp"), print(');
         newCode = `${newCode}\nprint("thisistemp")`;
-        pyodide.runPython(newCode);
+        self.pyodide.runPython(newCode);
         output = output.replaceAll('thisistemp\n', '');
 
         results.push({

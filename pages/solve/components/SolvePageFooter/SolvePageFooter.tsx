@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -14,7 +14,6 @@ import SaveProblemModal from '@/pages/solve/components/modal/SaveProblemModal';
 import SnippetsModal from '@/pages/solve/components/modal/SnippetsModal';
 import SolutionModal from '@/pages/solve/components/modal/SolutionModal';
 import TestCasesModal from '@/pages/solve/components/modal/TestCasesModal';
-import { runCode } from '@/services/run-code';
 import { codeState, languageState } from '@/states/code';
 import { executionResultsState } from '@/states/execution-results';
 import { problemState } from '@/states/problem';
@@ -23,6 +22,7 @@ import { addedTestCasesState } from '@/states/test-case';
 import styles from './SolvePageFooter.module.scss';
 
 const SolvePageFooter = () => {
+  const [worker, setWorker] = useState<Worker | null>(null);
   const code = useRecoilValue(codeState);
   const problem = useRecoilValue(problemState);
   const [executionResults, setExecutionResults] = useRecoilState(
@@ -40,24 +40,39 @@ const SolvePageFooter = () => {
     }
     setExecutionResults({ data: [], loading: true });
 
-    const { results, error } = await runCode({
+    worker?.postMessage({
       language,
       code,
       testCases: [...problem.examples, ...addedTestCases],
     });
-
-    if (!error && results) {
-      setExecutionResults({ data: results, loading: false });
-      await fetch('/api/increase', {method: 'POST'})
-    } else {
-      if (checkApiError(error, 'RunServerError')) {
-        notifyError('채점 서버 에러');
-      } else {
-        notifyError();
-      }
-      setExecutionResults({ data: [], loading: false });
-    }
   };
+
+  useEffect(() => {
+    const myWorker = new Worker(new URL('./worker.ts', import.meta.url), {
+      type: 'module',
+    });
+    setWorker(myWorker);
+
+    myWorker.onmessage = async (e) => {
+      const { error, results } = e.data;
+
+      if (!error && results) {
+        setExecutionResults({ data: results, loading: false });
+        await fetch('/api/increase', { method: 'POST' });
+      } else {
+        if (checkApiError(error, 'RunServerError')) {
+          notifyError('채점 서버 에러');
+        } else {
+          notifyError();
+        }
+        setExecutionResults({ data: [], loading: false });
+      }
+    };
+
+    return () => {
+      myWorker.terminate();
+    };
+  }, [setExecutionResults]);
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) {
