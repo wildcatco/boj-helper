@@ -7,7 +7,7 @@ import useModal from '@/hooks/useModal';
 import useSolution from '@/hooks/useSolution';
 import useUser from '@/hooks/useUser';
 import { checkApiError } from '@/libs/api/api-error';
-import { notifyError } from '@/libs/utils/notification';
+import { notifyError, notifySuccess } from '@/libs/utils/notification';
 import StopWatch from '@/pages/solve/components/SolvePageFooter/StopWatch/StopWatch';
 import LoginModal from '@/pages/solve/components/modal/LoginModal';
 import SaveProblemModal from '@/pages/solve/components/modal/SaveProblemModal';
@@ -51,7 +51,11 @@ const SolvePageFooter = () => {
 
     timerRef.current = setTimeout(() => {
       setExecutionResults({ data: [], loading: false });
-      notifyError('코드 실행 시간이 초과되었습니다. (20초)');
+      notifyError(
+        `코드 실행 시간이 초과되었습니다. (${Math.floor(
+          RUN_CODE_TIMEOUT / 1000
+        )}초)`
+      );
 
       worker?.terminate();
       const myWorker = new Worker(new URL('./worker.ts', import.meta.url), {
@@ -61,26 +65,39 @@ const SolvePageFooter = () => {
     }, RUN_CODE_TIMEOUT);
   };
 
-  useEffect(() => {
+  const handleCancel = () => {
+    worker?.terminate();
     const myWorker = new Worker(new URL('./worker.ts', import.meta.url), {
       type: 'module',
     });
     setWorker(myWorker);
+    timerRef.current && clearTimeout(timerRef.current);
+    setExecutionResults({ data: [], loading: false });
+    notifySuccess('코드 실행이 취소되었습니다.');
+  };
 
-    myWorker.onmessage = async (e) => {
+  useEffect(() => {
+    if (!worker) {
+      const myWorker = new Worker(new URL('./worker.ts', import.meta.url), {
+        type: 'module',
+      });
+      setWorker(myWorker);
+    }
+
+    return () => {
+      worker?.terminate();
+    };
+  }, [worker]);
+
+  useEffect(() => {
+    if (!worker) {
+      return;
+    }
+
+    worker.onmessage = async (e) => {
       timerRef.current && clearTimeout(timerRef.current);
 
-      const { error, results, timeout } = e.data;
-
-      if (timeout) {
-        notifyError(
-          `코드 실행 시간이 초과되었습니다. (${Math.floor(
-            RUN_CODE_TIMEOUT / 1000
-          )}초)`
-        );
-        setExecutionResults({ data: [], loading: false });
-        return;
-      }
+      const { error, results } = e.data;
 
       if (!error && results) {
         setExecutionResults({ data: results, loading: false });
@@ -94,11 +111,7 @@ const SolvePageFooter = () => {
         setExecutionResults({ data: [], loading: false });
       }
     };
-
-    return () => {
-      myWorker.terminate();
-    };
-  }, [setExecutionResults]);
+  }, [worker, setExecutionResults]);
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) {
@@ -135,9 +148,12 @@ const SolvePageFooter = () => {
           </Button>
         </div>
         <Button onClick={() => openModal('saveProblem')}>문제 저장</Button>
-        <Button onClick={handleRun} disabled={executionResults.loading}>
-          코드 실행
-        </Button>
+        {!executionResults.loading && (
+          <Button onClick={handleRun}>코드 실행</Button>
+        )}
+        {executionResults.loading && (
+          <Button onClick={handleCancel}>실행 취소</Button>
+        )}
       </div>
 
       <SolutionModal
