@@ -7,6 +7,7 @@ import Layout from '@/components/Layout';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { LanguageNotSupported, ProblemNotFound } from '@/libs/constants/errors';
+import PatchNote from '@/pages/components/PatchNote';
 import { languageState } from '@/states/code';
 
 import styles from './index.module.scss';
@@ -64,6 +65,7 @@ const HomePage = () => {
           <span>사용법 보기</span>
         </Button>
       </div>
+      <PatchNote />
     </Layout>
   );
 };
