@@ -36,6 +36,10 @@ const Editor: React.FC<EditorProps> = ({
           top: 12,
         },
         readOnly,
+        quickSuggestions: false,
+        suggestOnTriggerCharacters: false,
+        parameterHints: { enabled: false },
+        wordBasedSuggestions: false,
       }}
       value={value}
       onChange={onChange}
