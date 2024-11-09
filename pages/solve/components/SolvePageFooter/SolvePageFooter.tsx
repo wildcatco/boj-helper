@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -21,6 +21,8 @@ import { addedTestCasesState } from '@/states/test-case';
 
 import styles from './SolvePageFooter.module.scss';
 
+const RUN_CODE_TIMEOUT = 20 * 1000; // 20초
+
 const SolvePageFooter = () => {
   const [worker, setWorker] = useState<Worker | null>(null);
   const code = useRecoilValue(codeState);
@@ -33,6 +35,7 @@ const SolvePageFooter = () => {
   const { openModal } = useModal();
   const { isLoggedIn, isLoading } = useUser();
   const { solution } = useSolution(problem.id);
+  const timerRef = useRef<NodeJS.Timer>();
 
   const handleRun = async () => {
     if (!code) {
@@ -45,6 +48,17 @@ const SolvePageFooter = () => {
       code,
       testCases: [...problem.examples, ...addedTestCases],
     });
+
+    timerRef.current = setTimeout(() => {
+      setExecutionResults({ data: [], loading: false });
+      notifyError('코드 실행 시간이 초과되었습니다. (20초)');
+
+      worker?.terminate();
+      const myWorker = new Worker(new URL('./worker.ts', import.meta.url), {
+        type: 'module',
+      });
+      setWorker(myWorker);
+    }, RUN_CODE_TIMEOUT);
   };
 
   useEffect(() => {
@@ -54,7 +68,19 @@ const SolvePageFooter = () => {
     setWorker(myWorker);
 
     myWorker.onmessage = async (e) => {
-      const { error, results } = e.data;
+      timerRef.current && clearTimeout(timerRef.current);
+
+      const { error, results, timeout } = e.data;
+
+      if (timeout) {
+        notifyError(
+          `코드 실행 시간이 초과되었습니다. (${Math.floor(
+            RUN_CODE_TIMEOUT / 1000
+          )}초)`
+        );
+        setExecutionResults({ data: [], loading: false });
+        return;
+      }
 
       if (!error && results) {
         setExecutionResults({ data: results, loading: false });
