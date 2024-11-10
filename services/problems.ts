@@ -45,13 +45,22 @@ export const crawlProblem = async (id: string): Promise<Problem | null> => {
     const examples = [];
     let exampleNumber = 1;
     while (true) {
-      const inputExampleHtml = $(`#sample-input-${exampleNumber}`).html();
-      const outputExampleHtml = $(`#sample-output-${exampleNumber}`).html();
+      const inputExampleHtml = $(`#sample-input-${exampleNumber}`)
+        .html()
+        ?.trim();
+      const outputExampleHtml = $(`#sample-output-${exampleNumber}`)
+        .html()
+        ?.trim();
+      const explainHtml = $(`#problem_sample_explain_${exampleNumber}`)
+        .html()
+        ?.trim();
 
       if (inputExampleHtml && outputExampleHtml) {
         examples.push({
-          input: inputExampleHtml.trim(),
-          output: outputExampleHtml.trim(),
+          number: exampleNumber,
+          input: inputExampleHtml,
+          output: outputExampleHtml,
+          explain: explainHtml || null,
         });
         exampleNumber += 1;
       } else {
@@ -60,14 +69,22 @@ export const crawlProblem = async (id: string): Promise<Problem | null> => {
     }
 
     // 이미지 src base url 지정
-    descriptionHtml = descriptionHtml.replaceAll(
-      'src="/upload',
-      'src="https://www.acmicpc.net/upload'
-    );
-    descriptionHtml = descriptionHtml.replaceAll(
-      'src="/JudgeOnline/upload',
-      'src="https://www.acmicpc.net/JudgeOnline/upload'
-    );
+    descriptionHtml = descriptionHtml
+      .replaceAll('src="/upload', 'src="https://www.acmicpc.net/upload')
+      .replaceAll(
+        'src="/JudgeOnline/upload',
+        'src="https://www.acmicpc.net/JudgeOnline/upload'
+      );
+    examples.forEach((example) => {
+      if (example.explain) {
+        example.explain = example.explain
+          .replaceAll('src="/upload', 'src="https://www.acmicpc.net/upload')
+          .replaceAll(
+            'src="/JudgeOnline/upload',
+            'src="https://www.acmicpc.net/JudgeOnline/upload'
+          );
+      }
+    });
 
     return {
       id,
@@ -102,6 +119,7 @@ export const saveProblem = async (problem: Problem) => {
       data: {
         input: example.input,
         output: example.output,
+        explain: example.explain,
         problem: {
           connect: {
             id: problem.id,

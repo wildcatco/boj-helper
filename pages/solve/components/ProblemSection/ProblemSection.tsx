@@ -60,18 +60,25 @@ const ProblemSection = () => {
         </div>
       )}
       <div>
-        {examples.map((example, index) => (
-          <div key={index}>
-            <div>
-              <ProblemSectionSubHeader title={`예제 입력 ${index + 1}`} />
-              <BootstrapWrapper html={example.input} tag="pre" />
+        {[...examples]
+          .sort((a, b) => a.number - b.number)
+          .map((example, index) => (
+            <div key={index}>
+              <div>
+                <ProblemSectionSubHeader title={`예제 입력 ${index + 1}`} />
+                <BootstrapWrapper html={example.input} tag="pre" />
+              </div>
+              <div>
+                <ProblemSectionSubHeader title={`예제 출력 ${index + 1}`} />
+                <BootstrapWrapper html={example.output} tag="pre" />
+              </div>
+              {example.explain && (
+                <div>
+                  <BootstrapWrapper html={example.explain} tag="div" />
+                </div>
+              )}
             </div>
-            <div>
-              <ProblemSectionSubHeader title={`예제 출력 ${index + 1}`} />
-              <BootstrapWrapper html={example.output} tag="pre" />
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </>
   );

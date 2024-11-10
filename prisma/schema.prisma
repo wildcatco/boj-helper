@@ -1,22 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 model User {
   id         String     @id @default(cuid())
   email      String
   provider   String
-  solutions  Solution[]
-  categories Category[]
-  snippets   Snippet[]
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @default(now()) @updatedAt
   numOfRuns  Int        @default(0)
+  categories Category[]
+  snippets   Snippet[]
+  solutions  Solution[]
 
   @@unique([email, provider])
 }
@@ -28,21 +28,23 @@ model Problem {
   inputHtml       String
   outputHtml      String
   limitHtml       String?
-  examples        Example[]
-  solutions       Solution[]
   associations    Int[]
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
+  examples        Example[]
+  solutions       Solution[]
 }
 
 model Example {
   id        String   @id @default(cuid())
+  number    Int      @default(0)
   input     String
   output    String
-  problem   Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  explain   String?
   problemId String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  problem   Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
 }
 
 model Solution {
@@ -51,14 +53,14 @@ model Solution {
   language   String
   difficulty String
   revisit    Boolean  @default(true)
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
-  problem    Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
   problemId  String
-  category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  category   Category @relation(fields: [categoryId], references: [id])
+  problem    Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, problemId])
 }
@@ -66,11 +68,11 @@ model Solution {
 model Category {
   id        String     @id @default(cuid())
   name      String
-  solutions Solution[]
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  solutions Solution[]
 
   @@unique([userId, name])
 }
@@ -80,10 +82,10 @@ model Snippet {
   name      String
   language  String
   code      String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, name])
 }
