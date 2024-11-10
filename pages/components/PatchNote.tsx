@@ -11,7 +11,9 @@ const PatchNote = () => {
           <ul key={date} className={styles.list}>
             <h2 className={styles.date}>{date}</h2>
             {contents.map((content) => (
-              <li key={content}>{content}</li>
+              <li key={content}>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+              </li>
             ))}
           </ul>
         ))}
