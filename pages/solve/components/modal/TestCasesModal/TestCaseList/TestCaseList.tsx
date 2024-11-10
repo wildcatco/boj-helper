@@ -1,12 +1,12 @@
 import TestCaseItem from './TestCaseItem';
 
-import { Example } from '@/types/problem';
+import { TestCase } from '@/types/problem';
 
 import styles from './TestCaseList.module.scss';
 
 interface TestCaseListProps {
-  examples: Example[];
-  addedTestCases: Example[];
+  examples: TestCase[];
+  addedTestCases: TestCase[];
   onEdit: (index: number) => () => void;
   onDelete: (index: number) => () => void;
   testCasesOpen: boolean[];

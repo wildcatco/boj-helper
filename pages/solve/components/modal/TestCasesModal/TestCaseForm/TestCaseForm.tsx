@@ -7,7 +7,7 @@ import Label from '@/components/ui/Label';
 import TextArea from '@/components/ui/TextArea';
 import useModal from '@/hooks/useModal';
 import { addedTestCasesState, editingTestCaseState } from '@/states/test-case';
-import { Example } from '@/types/problem';
+import { TestCase } from '@/types/problem';
 
 import styles from './TestCaseForm.module.scss';
 
@@ -23,7 +23,7 @@ const TestCaseForm: React.FC<TestCaseFormProps> = ({ mode }) => {
     mode === 'add'
       ? { input: '', output: '' }
       : addedTestCases[editingTestCase];
-  const [testCase, setTestCase] = useState<Example>(initialValue);
+  const [testCase, setTestCase] = useState<TestCase>(initialValue);
   const { closeModal } = useModal();
 
   const modalName = mode === 'add' ? 'addTestCase' : 'editTestCase';

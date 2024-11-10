@@ -5,13 +5,13 @@ import {
 } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
 
-import { Example } from '@/types/problem';
+import { TestCase } from '@/types/problem';
 
 import styles from './TestCaseItem.module.scss';
 
 interface TestCaseProps {
   caseNumber: number;
-  example: Example;
+  example: TestCase;
   isAdded?: boolean;
   onEdit?: () => void;
   onDelete?: () => void;

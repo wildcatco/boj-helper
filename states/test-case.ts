@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 
-import { Example } from '@/types/problem';
+import { TestCase } from '@/types/problem';
 
-export const addedTestCasesState = atom<Example[]>({
+export const addedTestCasesState = atom<TestCase[]>({
   key: 'addedTestCasesState',
   default: [],
 });

@@ -4,7 +4,7 @@ import {
   CreateSubmissionResponse,
   GetSubmissionResponse,
 } from '@/types/dto/submission';
-import { Example } from '@/types/problem';
+import { TestCase } from '@/types/problem';
 import { TestResult } from '@/types/test-result';
 
 export function encode(str: string) {
@@ -28,7 +28,7 @@ export const createSubmission = async ({
 }: {
   code: string;
   languageId: number;
-  testCases: Example[];
+  testCases: TestCase[];
 }) => {
   const response = await axios.post<CreateSubmissionResponse>(
     `${process.env.JUDGE_URL}/submissions/batch`,

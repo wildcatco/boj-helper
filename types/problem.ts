@@ -5,6 +5,11 @@ export interface Example {
   explain: string | null;
 }
 
+export interface TestCase {
+  input: string;
+  output: string;
+}
+
 export interface Problem {
   id: string;
   title: string;
