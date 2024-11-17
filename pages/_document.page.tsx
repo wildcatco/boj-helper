@@ -3,15 +3,16 @@ import React from 'react';
 
 export default function Document() {
   return (
-    <Html lang="en">
-      <Head />
-      <script src="/mathjax-config.js" defer />
-      <script
-        type="text/javascript"
-        id="MathJax-script"
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-        defer
-      />
+    <Html lang="ko">
+      <Head>
+        <script src="/mathjax-config.js" defer />
+        <script
+          type="text/javascript"
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+          defer
+        />
+      </Head>
       <body>
         <div id="modal"></div>
         <Main />
