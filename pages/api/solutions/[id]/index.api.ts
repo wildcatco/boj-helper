@@ -1,13 +1,17 @@
+import { NextApiResponse } from 'next';
+
+import { requireAuth } from '../../middlewares/require-auth';
 import { deleteSolution } from './delete-solution';
 import { getSolution } from './get-solution';
 import { updateSolution } from './update-solution';
+import { createRouter } from 'next-connect';
 
-import { createHandler } from '@/libs/api/create-handler';
+import { NextApiRequestWithUser } from '@/types/api';
 
-const handler = createHandler({ authRequired: true });
+const router = createRouter<NextApiRequestWithUser, NextApiResponse>()
+  .use(requireAuth)
+  .get(getSolution)
+  .post(updateSolution)
+  .delete(deleteSolution);
 
-handler.get(getSolution);
-handler.post(updateSolution);
-handler.delete(deleteSolution);
-
-export default handler;
+export default router.handler();

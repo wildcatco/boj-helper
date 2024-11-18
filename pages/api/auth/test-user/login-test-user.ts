@@ -1,12 +1,10 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+
 import { setCookie } from 'cookies-next';
 import { encode } from 'next-auth/jwt';
 import { v4 as uuidv4 } from 'uuid';
 
-import { createHandler } from '@/libs/api/create-handler';
-
-const handler = createHandler();
-
-handler.post(async (req, res) => {
+export async function loginTestUser(req: NextApiRequest, res: NextApiResponse) {
   const dateTimeNow = Math.floor(Date.now() / 1000);
   const expiry = dateTimeNow + 30 * 24 * 60 * 60; // 30 days
   const cookieName = 'next-auth.session-token';
@@ -31,6 +29,4 @@ handler.post(async (req, res) => {
   });
 
   res.status(200).end();
-});
-
-export default handler;
+}

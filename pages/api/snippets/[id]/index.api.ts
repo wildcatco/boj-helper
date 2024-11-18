@@ -1,10 +1,15 @@
-import { createHandler } from '@/libs/api/create-handler';
+import { NextApiResponse } from 'next';
+
+import { requireAuth } from '../../middlewares/require-auth';
+import { createRouter } from 'next-connect';
+
 import { deleteSnippet } from '@/pages/api/snippets/[id]/delete-snippet';
 import { updateSnippet } from '@/pages/api/snippets/[id]/update-snippet';
+import { NextApiRequestWithUser } from '@/types/api';
 
-const handler = createHandler({ authRequired: true });
+const router = createRouter<NextApiRequestWithUser, NextApiResponse>()
+  .use(requireAuth)
+  .post(updateSnippet)
+  .delete(deleteSnippet);
 
-handler.post(updateSnippet);
-handler.delete(deleteSnippet);
-
-export default handler;
+export default router.handler();
