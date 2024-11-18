@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 
-import { useRecoilState } from 'recoil';
-
 import SectionHeader from '../SectionHeader';
 import ResultList from './ResultList/ResultList';
-import styles from './ResultSection.module.scss';
 import ResultSummary from './ResultSummary';
+import { useRecoilState } from 'recoil';
+
 import { executionResultsState } from '@/states/execution-results';
+
+import styles from './ResultSection.module.scss';
 
 const ResultSection = () => {
   const [{ data: executionResults, loading }, setExecutionResults] =

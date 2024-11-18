@@ -1,15 +1,16 @@
 import { useState } from 'react';
 
+import TestCaseList from './TestCaseList/TestCaseList';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
-import TestCaseList from './TestCaseList/TestCaseList';
-import styles from './TestCasesModal.module.scss';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import useModal from '@/hooks/useModal';
 import TestCaseForm from '@/pages/solve/components/modal/TestCasesModal/TestCaseForm';
 import { problemState } from '@/states/problem';
 import { addedTestCasesState, editingTestCaseState } from '@/states/test-case';
+
+import styles from './TestCasesModal.module.scss';
 
 const TestCasesModal = () => {
   const problem = useRecoilValue(problemState);

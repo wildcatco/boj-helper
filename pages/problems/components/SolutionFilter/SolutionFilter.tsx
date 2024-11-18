@@ -1,7 +1,8 @@
-import styles from './SolutionFilter.module.scss';
 import CategoryFilter from '@/pages/problems/components/SolutionFilter/CategoryFilter/CategoryFilter';
 import DifficultyFilter from '@/pages/problems/components/SolutionFilter/DifficultyFilter/DifficultyFilter';
 import Search from '@/pages/problems/components/SolutionFilter/Search/Search';
+
+import styles from './SolutionFilter.module.scss';
 
 const SolutionFilter = () => {
   return (

@@ -1,6 +1,7 @@
-import styles from './index.module.scss';
 import Layout from '@/components/Layout';
 import Button from '@/components/ui/Button';
+
+import styles from './index.module.scss';
 
 const ErrorPage500 = () => {
   return (

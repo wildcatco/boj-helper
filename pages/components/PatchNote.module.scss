@@ -5,18 +5,18 @@
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: bold;
   margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .contents {
   border: 1px solid #cecece;
   border-radius: 10px;
+  padding: 0 20px;
   max-width: 40rem;
   max-height: 25rem;
   overflow-y: scroll;
-  padding: 0 20px;
 }
 
 .contents::-webkit-scrollbar {
@@ -24,8 +24,8 @@
 }
 
 .contents::-webkit-scrollbar-thumb {
-  background-color: #989898;
   border-radius: 10px;
+  background-color: #989898;
 }
 
 .list {

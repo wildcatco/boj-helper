@@ -1,9 +1,9 @@
-@import "variables";
+@import 'variables';
 
 .home {
-  font-size: 2rem;
   cursor: pointer;
   color: $color-primary;
+  font-size: 2rem;
 }
 
 :global(.dark) {

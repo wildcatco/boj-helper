@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .navbar-item {
   cursor: pointer;
@@ -10,8 +10,8 @@
 }
 
 .active {
-  font-weight: bold;
   color: $color-primary;
+  font-weight: bold;
 }
 
 :global(.dark) {

@@ -1,10 +1,11 @@
 import { ChangeEvent } from 'react';
 
-import styles from './SnippetSearch.module.scss';
 import Input from '@/components/ui/Input';
 import Label from '@/components/ui/Label';
 import usePushWithParams from '@/hooks/usePushWithParams';
 import { debounce } from '@/libs/utils/debounce';
+
+import styles from './SnippetSearch.module.scss';
 
 const SnippetSearch = () => {
   const { push } = usePushWithParams();

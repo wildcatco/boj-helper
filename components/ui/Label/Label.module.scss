@@ -1,11 +1,11 @@
-@import "variables";
+@import 'variables';
 
 .label {
-  font-size: $font-base;
-  font-weight: bold;
   padding: 0.5rem 0;
-  white-space: nowrap;
   color: $color-primary;
+  font-weight: bold;
+  font-size: $font-base;
+  white-space: nowrap;
 }
 
 .base {

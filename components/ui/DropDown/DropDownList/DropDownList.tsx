@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { DropDownItem } from '../DropDown';
+
 import styles from './DropDownList.module.scss';
 
 interface DropDownListProps {

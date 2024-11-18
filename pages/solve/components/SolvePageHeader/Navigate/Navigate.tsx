@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import { useRecoilValue } from 'recoil';
 
-import styles from './Navigate.module.scss';
 import { problemState } from '@/states/problem';
+
+import styles from './Navigate.module.scss';
 
 const Navigate = () => {
   const router = useRouter();

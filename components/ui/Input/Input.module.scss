@@ -1,11 +1,11 @@
-@import "variables";
+@import 'variables';
 
 .input {
-  font-size: $font-base;
-  padding: 0.7rem 1rem;
+  outline-color: $color-primary;
   border: 1px solid $border;
   border-radius: $radius-md;
-  outline-color: $color-primary;
+  padding: 0.7rem 1rem;
+  font-size: $font-base;
 }
 
 :global(.dark) {

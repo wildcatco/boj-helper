@@ -1,10 +1,10 @@
-@import "variables";
+@import 'variables';
 
 .container {
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 
   > *:first-child {
@@ -13,9 +13,9 @@
 }
 
 .message {
-  font-size: $font-xl;
-  font-weight: bold;
   color: $color-primary;
+  font-weight: bold;
+  font-size: $font-xl;
 }
 
 :global(.dark) {

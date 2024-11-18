@@ -1,9 +1,10 @@
 import { createPortal } from 'react-dom';
 
-import styles from './Modal.module.scss';
 import useModal from '@/hooks/useModal';
 import { getZIndexFromTime } from '@/libs/utils/z-index';
 import { ModalName } from '@/states/modal';
+
+import styles from './Modal.module.scss';
 
 interface ModalProps {
   name: ModalName;

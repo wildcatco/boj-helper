@@ -1,6 +1,7 @@
-import styles from './SolutionModal.module.scss';
 import Editor from '@/components/ui/Editor/Editor';
 import Modal from '@/components/ui/Modal';
+
+import styles from './SolutionModal.module.scss';
 
 interface SolutionModalProps {
   solution: {

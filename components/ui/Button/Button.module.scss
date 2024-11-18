@@ -28,9 +28,9 @@
 }
 
 .outlined {
-  padding: 16px 10px;
   border: 1px solid $color-primary;
   background-color: transparent;
+  padding: 16px 10px;
   color: $color-primary;
 
   &:hover {
@@ -43,7 +43,7 @@
 .loading {
   pointer-events: none;
 
-  >span {
+  > span {
     visibility: hidden;
   }
 }

@@ -1,36 +1,36 @@
-@import "variables";
+@import 'variables';
 
 .login-button {
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 16rem;
-  height: 3rem;
+  align-items: center;
   cursor: pointer;
-  user-select: none;
   border: 1px solid $border;
   border-radius: $radius-md;
   background-color: white;
+  width: 16rem;
+  height: 3rem;
+  user-select: none;
 
   &:hover {
     filter: brightness(95%);
   }
 
   &:disabled {
-    cursor: wait;
     filter: brightness(100%);
+    cursor: wait;
   }
 }
 
 .icon {
-  font-size: $font-3xl;
   margin-right: 0.5rem;
+  font-size: $font-3xl;
 }
 
 :global(.dark) {
   .login-button {
-    color: $text;
     background-color: #dcdcdc;
+    color: $text;
 
     &:hover {
       border-color: $border-dark-gray;

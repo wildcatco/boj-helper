@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
-import styles from './DropDown.module.scss';
 import DropDownLabel from './DropDownLabel';
 import DropDownList from './DropDownList';
+
+import styles from './DropDown.module.scss';
 
 export interface DropDownItem {
   label: string;

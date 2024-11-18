@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 
+import NavbarItem from './NavbarItem';
 import { signOut } from 'next-auth/react';
 
 import styles from './Navbar.module.scss';
-import NavbarItem from './NavbarItem';
 
 const MENU_ITEMS = [
   { path: '/', name: '문제 풀기' },

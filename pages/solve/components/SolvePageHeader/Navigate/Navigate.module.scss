@@ -5,11 +5,11 @@
 }
 
 .link {
-  font-size: $font-base;
   display: flex;
   align-items: center;
   margin-right: 1rem;
   color: $color-primary;
+  font-size: $font-base;
 }
 
 :global(.dark) {

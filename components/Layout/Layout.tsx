@@ -1,7 +1,8 @@
 import Head from 'next/head';
 
-import styles from './Layout.module.scss';
 import MainHeader from './MainHeader';
+
+import styles from './Layout.module.scss';
 
 interface LayoutProps {
   hasHeader?: boolean;

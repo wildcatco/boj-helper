@@ -1,11 +1,11 @@
-@import "variables";
+@import 'variables';
 
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.6rem 1rem;
   border-radius: $radius-md;
+  padding: 0.6rem 1rem;
 }
 
 .contents {
@@ -25,10 +25,10 @@
 }
 
 .label {
-  font-size: $font-lg;
-  font-weight: bold;
-  color: $color-primary;
   container: $color-primary;
+  color: $color-primary;
+  font-weight: bold;
+  font-size: $font-lg;
 }
 
 .controls {

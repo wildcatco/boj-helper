@@ -3,10 +3,10 @@
 .container {
   display: flex;
   flex-direction: column;
+  padding: 0 2rem;
   width: 70vw;
   min-width: 20rem;
   max-width: 35rem;
-  padding: 0 2rem;
 
   > *:not(:last-child) {
     margin-bottom: 1rem;
@@ -19,8 +19,8 @@
 }
 
 .code {
- height: 25rem;
   border: 1px solid $border;
+  height: 25rem;
 }
 
 .controls {
