@@ -93,11 +93,6 @@ https://www.youtube.com/watch?v=X5pdJCYOxuc
 - Python3
 - JavaScript
  
-### 추후 예정
-현재는 사용자 코드를 돌리기 위한 서버를 따로 두지 않고 사용자의 브라우저에서 코드를 실행하고 있습니다. (파이썬 코드는 [Pyodide](https://github.com/pyodide/pyodide)를 이용합니다.)<br>
-[Judge0](https://github.com/judge0/judge0)를 사용하여 많은 언어를 지원할 수 있지만 자본 문제로 당장은 힘들 것 같습니다.<br>
-사용자가 많이 늘어나면 하루에 일정 시간이라도 서버를 돌려 다른 언어들도 지원해 보도록 하겠습니다. (이미 코드는 작성되어 있습니다.)
-
 ## 주의 사항
 현재 사용자 코드는 브라우저에서 실행되므로 JavaScript의 stdin을 받아올 때 파일 시스템을 사용할 수 없습니다.<br>
 아래 코드는 복사하여 백준 사이트에 제출하기 편하도록 하기 위한 겉보기 용 코드이며 내부적으로는 테스트케이스의 입력을 stdin에 넣어주는 코드로 대체됩니다.<br>
@@ -105,13 +100,6 @@ https://www.youtube.com/watch?v=X5pdJCYOxuc
 
 <img alt="demo site screenshot" src="public/readme/features/javascript-warning.png" width="100%" />
 
-## TODO
-
-- [ ] 타이머 기능
-- [ ] 디자인 보강
-- [ ] 지원 언어 추가
-- [ ] 자동 완성 (현재는 JavaScript만 지원)
-- [ ] admin 페이지
 
 ## 문의 및 버그 제보
 
