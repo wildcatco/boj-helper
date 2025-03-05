@@ -46,12 +46,20 @@ const ProblemSection = () => {
         <BootstrapWrapper html={descriptionHtml} tag="div" />
       </div>
       <div>
-        <ProblemSectionSubHeader title="입력" />
-        <BootstrapWrapper html={inputHtml} tag="div" />
+        {inputHtml && (
+          <>
+            <ProblemSectionSubHeader title="입력" />
+            <BootstrapWrapper html={inputHtml} tag="div" />
+          </>
+        )}
       </div>
       <div>
-        <ProblemSectionSubHeader title="출력" />
-        <BootstrapWrapper html={outputHtml} tag="div" />
+        {outputHtml && (
+          <>
+            <ProblemSectionSubHeader title="출력" />
+            <BootstrapWrapper html={outputHtml} tag="div" />
+          </>
+        )}
       </div>
       {limitHtml && (
         <div>

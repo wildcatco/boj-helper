@@ -34,8 +34,8 @@ export const crawlProblem = async (id: string): Promise<Problem | null> => {
 
     const title = $('span#problem_title').text().trim();
     let descriptionHtml = $('div#problem_description').html()!.trim();
-    const inputHtml = $('div#problem_input').html()!.trim();
-    const outputHtml = $('div#problem_output').html()!.trim();
+    const inputHtml = $('div#problem_input').html()?.trim() || '';
+    const outputHtml = $('div#problem_output').html()?.trim() || '';
     const limitHtml = $('div#problem_limit').html()?.trim() || null;
     const associations = $('section#problem_association')
       .find('ul > li > a')
