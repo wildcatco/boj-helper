@@ -1,6 +1,12 @@
 import { toast } from 'react-toastify';
 
-export const notifySuccess = (message: string) => toast.success(message);
+export const notifySuccess = (
+  message: string,
+  options?: { preserve?: boolean }
+) =>
+  toast.success(message, {
+    autoClose: options?.preserve ? false : 5000,
+  });
 
 export const notifyError = (message?: string) => {
   if (message) {
