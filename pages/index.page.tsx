@@ -45,27 +45,29 @@ const HomePage = () => {
       description="백준 문제의 번호를 입력하여 문제를 생성합니다."
     >
       <div className={styles.container}>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <Input
-            type="number"
-            required={true}
-            placeholder="문제 번호를 입력하세요"
-            min={1000}
-            max={99999}
-            onChange={handleInputChange}
-          />
-          <Button loading={loading}>문제 풀기</Button>
-        </form>
-        <Button
-          className={styles.like}
-          outlined
-          href="https://github.com/wildcatco/boj-helper"
-          target="_blank"
-        >
-          <span>사용법 보기</span>
-        </Button>
+        <div className={styles.formWrapper}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <Input
+              type="number"
+              required={true}
+              placeholder="문제 번호를 입력하세요"
+              min={1000}
+              max={99999}
+              onChange={handleInputChange}
+            />
+            <Button loading={loading}>문제 풀기</Button>
+          </form>
+          <Button
+            className={styles.like}
+            outlined
+            href="https://github.com/wildcatco/boj-helper"
+            target="_blank"
+          >
+            <span>사용법 보기</span>
+          </Button>
+        </div>
+        <PatchNote />
       </div>
-      <PatchNote />
     </Layout>
   );
 };
