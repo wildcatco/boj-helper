@@ -76,6 +76,15 @@ const SolvePageFooter = () => {
     notifySuccess('코드 실행이 취소되었습니다.');
   };
 
+  const handleSubmit = () => {
+    notifySuccess('코드가 복사되었습니다.');
+    navigator.clipboard.writeText(code);
+
+    setTimeout(() => {
+      window.open(`https://www.acmicpc.net/submit/${problem.id}`, '_blank');
+    }, 1000);
+  };
+
   useEffect(() => {
     if (!worker) {
       const myWorker = new Worker(new URL('./worker.ts', import.meta.url), {
@@ -137,14 +146,8 @@ const SolvePageFooter = () => {
       </div>
       <div className={styles.footerRight}>
         <div className={styles.submit}>
-          <Button outlined>
-            <a
-              href={`https://www.acmicpc.net/submit/${problem.id}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              제출하기
-            </a>
+          <Button outlined onClick={handleSubmit}>
+            제출하기
           </Button>
         </div>
         <Button onClick={() => openModal('saveProblem')}>문제 저장</Button>
